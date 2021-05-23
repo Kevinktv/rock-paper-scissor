@@ -7,38 +7,38 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection, playerWins, computerWins){
     if(playerSelection.toUpperCase() === 'ROCK'){
         if(computerSelection.toUpperCase() === 'ROCK'){
-            return 'It\'s a draw! Rock equals rock.';
+            return 'draw';
         }
         else if(computerSelection.toUpperCase() === 'PAPER'){
-            return 'You lose! paper beats rock.';
+            return 'computer';
         }
         else{
-            return 'You win! Rock beats scissors.';
+            return 'player';
         }
     }
 
     else if(playerSelection.toUpperCase() === 'PAPER'){
         if(computerSelection.toUpperCase() === 'ROCK'){
-            return 'You win! Paper beats rock.';
+            return 'player';
         }
         else if(computerSelection.toUpperCase() === 'PAPER'){
-            return 'It\'s a draw! Paper equals paper.';
+            return 'draw';
         }
         else{
-            return 'You lose! Scissors beat paper.';
+            return 'computer';
         }
     
     }
 
     else if(playerSelection.toUpperCase() === 'SCISSORS'){
         if(computerSelection.toUpperCase() === 'ROCK'){
-            return 'You lose! Rock beats scissors.';
+            return 'computer';
         }
         else if(computerSelection.toUpperCase() === 'PAPER'){
-            return 'You win! Scissors beats paper.';
+            return 'player';
         }
         else{
-            return 'It\'s a draw! Scissors equals scissors.';
+            return 'draw';
         }
     }
 
@@ -46,10 +46,36 @@ function playRound(playerSelection, computerSelection, playerWins, computerWins)
 }
 
 function game(){
+    let playerWins = computerWins = 0;
     for(i = 0; i<=4; i++){
-        let playerWins = computerWins = 0;
-        playerSelection = prompt('Enter rock, paper or scissors.');
-        playRound(playerSelection, computerPlay(), playerWins, computerWins);
+        let playerSelection = prompt('Enter rock, paper or scissors.');
+        let computerSelection = computerPlay()
+        let result = playRound(playerSelection, computerSelection);
+        switch (result){
+            case 'player': playerWins += 1;
+            break;
 
+            case 'computer': computerWins += 1;
+            break;
+        
+            case 'draw':
+            break;
+
+        }
+        console.log(`${playerSelection} vs ${computerSelection}`);
+        console.log(`The winner of this round is ${result}.\
+        \nPlayer: ${playerWins}\
+        \nComputer: ${computerWins}`);
+
+
+    }
+    if(playerWins < computerWins){
+        console.log('The computer has won the game');
+    }
+    else if(playerWins === computerWins){
+        console.log('The games are a draw');
+    }
+    else{
+        console.log('The player has won the game!');
     }
 }
