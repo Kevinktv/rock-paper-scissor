@@ -48,6 +48,11 @@ th{
     font-size: 2em;
 }
 
+#result{
+    text-align: center;
+    font-size: 2.5em;
+}
+
 #restart{
     margin: 30px auto; 
     padding: 10px;
